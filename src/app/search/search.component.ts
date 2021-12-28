@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-search',
@@ -7,13 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchComponent implements OnInit {
   name:string=""
-  constructor() { }
+  constructor( private router:Router ) { }
 
   ngOnInit(): void {
    const storedName =localStorage.getItem('name')
    if(storedName){
      this.name = JSON.parse(storedName)
    }
+  }
+  logoutUser():any{
+    localStorage.removeItem('name')
+    this.router.navigate(["login"])
   }
 
 }
