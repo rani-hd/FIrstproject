@@ -1,13 +1,33 @@
-table{
+table {
     width: 100%;
-}
+  }
+  
+  .mat-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+  
+  td, th {
+    width: 25%;
+  }
 
 .flex{
     display: flex;
     margin-bottom: 10px;
     gap: 10px;
     align-items: center;
+    justify-content: space-between;
     p{
         font-size: 15px;
     }
+}
+.container{
+  min-width: 100%;
+  display: block;
+}
+.containerBox{
+  width: 30%;
+  padding: 15px;
+  box-shadow: 0 5px 8px rgba(0,0,0,0.3);
+  margin: 0 auto;
 }
