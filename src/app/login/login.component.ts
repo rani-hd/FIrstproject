@@ -14,10 +14,15 @@ export class LoginComponent implements OnInit {
   }
 
   addUser(): any {
+    if(this.username==""){
+      alert("Please enter name")
+    }    
+    else{
     console.log('My name is', this.username);
     localStorage.setItem('name', JSON.stringify(this.username.toLowerCase()));
     localStorage.setItem('counter', JSON.stringify(this.counter));
     this.router.navigate(['search']);
+    }
   }
 
   clearUser(): any {
