@@ -19,9 +19,10 @@ export interface countryData {
   styleUrls: ['./search.component.scss'],
 })
 export class SearchComponent implements OnInit, AfterViewInit {
-  name: string = '';
+  userName: string = '';
   cityName: string = '';
   countryName: string = '';
+  counterVal: number = 0;
 
   allCountries = [
     'India',
@@ -67,14 +68,13 @@ export class SearchComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     const storedName = localStorage.getItem('name');
     if (storedName) {
-      this.name = JSON.parse(storedName);
+      this.userName = JSON.parse(storedName);
     }
   }
   logoutUser(): any {
     localStorage.removeItem('name');
     this.router.navigate(['login']);
   }
-
   search(): any {
     console.log('you are searching for', this.countryName, this.cityName);
     this.countryData
@@ -93,9 +93,9 @@ export class SearchComponent implements OnInit, AfterViewInit {
         this.dataAvailabel = true;
 
         let counter = localStorage.getItem('counter') || '0';
-        let value = JSON.parse(counter);
-        value = value + 1;
-        localStorage.setItem('counter', JSON.stringify(value));
+        this.counterVal = JSON.parse(counter);
+        this.counterVal = this.counterVal + 1;
+        localStorage.setItem('counter', JSON.stringify(this.counterVal));
       });
   }
 }

@@ -1,7 +1,8 @@
 <div class="container">
   <div class="containerBox">
     <div class="flex">
-      <p>welcome {{name}}</p>
+      <p>welcome {{userName}}</p>
+
       <button type="button" mat-raised-button color="accent" (click)="logoutUser()">Logout</button>
     </div>
     <div style="display: block;margin-bottom: 10px;">
@@ -15,13 +16,18 @@
         <input matInput [(ngModel)]="cityName" name="cityName">
       </mat-form-field>
     </div>
+    <div class="flex">
     <button type="button" mat-raised-button color="accent" (click)="search()">Search</button>
+    <p>Search Count: {{counterVal}}</p>
+    </div>
   </div>
-  <div id="table" *ngIf="dataAvailabel">
+
+  <div id="table" >
     <mat-form-field appearance="standard">
       <mat-label>Filter</mat-label>
       <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
     </mat-form-field>
+
   
     <div class="mat-elevation-z8">
       <table mat-table [dataSource]="dataSource" matSort>
