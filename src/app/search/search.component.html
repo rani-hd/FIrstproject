@@ -22,7 +22,7 @@
     </div>
   </div>
 
-  <div id="table" >
+  <div id="table" *ngIf="dataAvailabel">
     <mat-form-field appearance="standard">
       <mat-label>Filter</mat-label>
       <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
