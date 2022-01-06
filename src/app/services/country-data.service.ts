@@ -7,8 +7,11 @@ export class CountryDataService {
 
   constructor(private http: HttpClient) {}
 
-  getData(countryName:string,cityName:string="") {
-    let URL = `http://universities.hipolabs.com/search?country=${countryName.toLocaleLowerCase()}`;
+  getData(countryName:string="",cityName:string="") {
+    let URL = `http://universities.hipolabs.com/search`;
+    if(countryName !== ""){
+      URL = `http://universities.hipolabs.com/search?country=${countryName.toLocaleLowerCase()}`;
+    }
     if(cityName !== ""){
       URL = `http://universities.hipolabs.com/search?country=${countryName.toLocaleLowerCase()}&name=${cityName.toLocaleLowerCase()}`;
     }

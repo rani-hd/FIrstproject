@@ -70,6 +70,22 @@ export class SearchComponent implements OnInit, AfterViewInit {
     if (storedName) {
       this.userName = JSON.parse(storedName);
     }
+
+    this.countryData
+      .getData(this.countryName, this.cityName)
+      .subscribe((data: any) => {
+        this.dataAvailabel = true
+        this.DATA = data.map((item: any, i: number) => {
+          return {
+            country_name: item.country,
+            univercity_name: item.name,
+            stateProvince: item['state-province'] || '-',
+            id: (i + 1).toString(),
+            domain: item.web_pages[0],
+          };
+        });
+        this.dataSource = new MatTableDataSource(this.DATA);
+      })
   }
   logoutUser(): any {
     localStorage.removeItem('name');
@@ -90,7 +106,6 @@ export class SearchComponent implements OnInit, AfterViewInit {
           };
         });
         this.dataSource = new MatTableDataSource(this.DATA);
-        this.dataAvailabel = true;
 
         let counter = localStorage.getItem('counter') || '0';
         this.counterVal = JSON.parse(counter);
